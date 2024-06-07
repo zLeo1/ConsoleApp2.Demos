@@ -17,6 +17,7 @@ namespace ConsoleApp.UserInputDemo
             //Prompt for user info
             Console.WriteLine("Please enter your first name");
             firstName = Console.ReadLine();
+
             Console.WriteLine("Please enter your last name");
             lastName = Console.ReadLine();
 
