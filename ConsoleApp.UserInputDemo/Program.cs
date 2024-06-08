@@ -9,27 +9,43 @@ namespace ConsoleApp.UserInputDemo
 
         static void Main(string[] args)
         {
-            string firstName = string.Empty;
+            string? firstName = string.Empty;
             string lastName = string.Empty;
-            int age = 0;
+            int age;
             int retirementAge = 65;
+            decimal salary;
+            char gender = char.MinValue;
+            bool isWorking = true;
 
             //Prompt for user info
-            Console.WriteLine("Please enter your first name");
+            Console.Write("Please enter your first name: ");
             firstName = Console.ReadLine();
 
-            Console.WriteLine("Please enter your last name");
+            Console.Write("Please enter your last name: ");
             lastName = Console.ReadLine();
 
-            Console.WriteLine("Please enter your age");
+            Console.Write("Please enter your age: ");
             age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Please enter your salary: ");
+            salary = Convert.ToDecimal(Console.ReadLine());
+
+            Console.Write("Please enter your gender (m or f): ");
+            gender = Convert.ToChar(Console.ReadLine());
+
+            Console.Write("Are you working? (true or false): ");
+            isWorking = Convert.ToBoolean(Console.ReadLine());
 
             //Process Input
             int workingYearsRemaining = retirementAge - age;
 
             //Show Output
-            Console.WriteLine($"Hi {firstName} {lastName} you have {workingYearsRemaining} years before you can live it up");
-            Console.WriteLine("{0} you are {1} years old and still hot!", firstName, age);
+            Console.WriteLine($"Full name: {firstName} {lastName}");
+            Console.WriteLine($"Age: {age}");
+            Console.WriteLine($"Your salary is: {salary}");
+            Console.WriteLine($"Your gender is: {gender}");
+            Console.WriteLine($"Are you employed?: {isWorking}");
+            Console.WriteLine($"Number of working years remaining: {workingYearsRemaining}");
         }
     }
 }
