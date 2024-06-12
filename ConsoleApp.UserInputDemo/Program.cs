@@ -1,6 +1,8 @@
 ﻿//Declare Variables
 //
 
+using System.Globalization;
+
 namespace ConsoleApp.UserInputDemo
 {
     internal class Program
@@ -9,10 +11,12 @@ namespace ConsoleApp.UserInputDemo
 
         static void Main(string[] args)
         {
+            const int retirementAge = 65;
+
             string? firstName = string.Empty;
             string lastName = string.Empty;
             int age;
-            int retirementAge = 65;
+            DateOnly dob = new DateOnly();
             decimal salary;
             char gender = char.MinValue;
             bool isWorking = true;
@@ -24,8 +28,9 @@ namespace ConsoleApp.UserInputDemo
             Console.Write("Please enter your last name: ");
             lastName = Console.ReadLine();
 
-            Console.Write("Please enter your age: ");
-            age = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Please enter your Date Of Birth(dd/mm/yyyy): ");
+            dob = DateOnly.ParseExact(Console.ReadLine(), "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            age = DateTime.Now.Year - dob.Year;
 
             Console.Write("Please enter your salary: ");
             salary = Convert.ToDecimal(Console.ReadLine());
@@ -38,14 +43,19 @@ namespace ConsoleApp.UserInputDemo
 
             //Process Input
             int workingYearsRemaining = retirementAge - age;
-
+            var estimatedRetirementYear = DateTime.Now.AddYears(workingYearsRemaining);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($"********** - Full User Info - ***********");
             //Show Output
             Console.WriteLine($"Full name: {firstName} {lastName}");
             Console.WriteLine($"Age: {age}");
-            Console.WriteLine($"Your salary is: {salary}");
+            Console.WriteLine($"Your salary is: {salary:C}");//Or can use {salary.ToString("C")}
             Console.WriteLine($"Your gender is: {gender}");
             Console.WriteLine($"Are you employed?: {isWorking}");
             Console.WriteLine($"Number of working years remaining: {workingYearsRemaining}");
+            Console.WriteLine($"Estimated Retirement Year: {estimatedRetirementYear.Year}");
         }
     }
 }
