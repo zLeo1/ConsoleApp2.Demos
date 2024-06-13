@@ -13,18 +13,7 @@
             {
                 try
                 {
-                    //Welcome message
-                    Console.Clear();
-                    Console.WriteLine("**********- Welcome to the simple calculator -**********");
-                    Console.WriteLine();
-                    Console.WriteLine("Please select an operation(-1 to exit)");
-                    Console.WriteLine("1 - Addition");
-                    Console.WriteLine("2 - Subtraction");
-                    Console.WriteLine("3 - Multiplication");
-                    Console.WriteLine("4 - Division");
-                    Console.WriteLine("5 - Fibonacci Sequence");
-                    Console.WriteLine();
-                    Console.Write("Choice: ");
+                    PrintMenu();
                     choice = Convert.ToInt32(Console.ReadLine());
 
                     if (choice == -1)
@@ -47,26 +36,23 @@
                     switch (choice)
                     {
                         case 1:
-                            answer = num1 + num2;
+                            answer = AddNumbers(num1, num2);
                             Console.WriteLine($"{num1} + {num2}");
                             break;
                         case 2:
-                            answer = num1 - num2;
+                            answer = SubtractNumbers(num1, num2);
                             Console.WriteLine($"{num1} - {num2}");
                             break;
                         case 3:
-                            answer = num1 * num2;
+                            answer = MultiplyNumbers(num1, num2);
                             Console.WriteLine($"{num1} * {num2}");
                             break;
                         case 4:
-                            answer = num1 / num2;
+                            answer = DivideNumbers(num1, num2);
                             Console.WriteLine($"{num1} / {num2}");
                             break;
                         case 5:
-                            for (int i = num1; i <= num2; i++)
-                            {
-                                answer += i;
-                            }
+                            answer = FibanacciNumbers(num1, num2);
                             Console.WriteLine($"Sum of numbers from {num1} to {num2}");
                             break;
                         default:
@@ -95,6 +81,53 @@
             }
             Console.WriteLine();
             Console.WriteLine("******- Thank you for using the simple calculator program -********");
+        }
+
+        private static int AddNumbers(int num1, int num2)
+        {
+            return num1 + num2;   
+        }
+
+        private static int SubtractNumbers(int num1, int num2)
+        {
+            return num1 - num2;
+        }
+
+        private static int MultiplyNumbers(int num1, int num2)
+        {
+            return num1 * num2;
+        }
+
+        private static int DivideNumbers(int num1, int num2)
+        {
+            return num1 / num2;
+        }
+
+        private static int FibanacciNumbers(int num1, int num2)
+        {
+            var answer = 0;
+            for (int i = num1; i <= num2; i++)
+            {
+                answer += i;
+            }
+
+            return answer;
+        }
+
+        private static void PrintMenu()
+        {
+            //Welcome message
+            Console.Clear();
+            Console.WriteLine("**********- Welcome to the simple calculator -**********");
+            Console.WriteLine();
+            Console.WriteLine("Please select an operation(-1 to exit)");
+            Console.WriteLine("1 - Addition");
+            Console.WriteLine("2 - Subtraction");
+            Console.WriteLine("3 - Multiplication");
+            Console.WriteLine("4 - Division");
+            Console.WriteLine("5 - Fibonacci Sequence");
+            Console.WriteLine();
+            Console.Write("Choice: ");
         }
     }
 }
